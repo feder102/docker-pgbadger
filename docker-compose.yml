@@ -9,3 +9,15 @@ services:
     environment:
       - "PARAMETERS="
       - "FILE_NAME=postgresql-*.log"
+  nginx:
+    image: nginx:1.13
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - 1010:80
+    volumes:
+      - ./outs:/usr/share/nginx/html
+    depends_on:
+      - pgbadger
