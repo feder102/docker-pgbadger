@@ -2,6 +2,9 @@ version: "3"
 services:
   pgbadger:
     image: sdg9670/pgbadger:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     container_name: pgbadger
     volumes:
       - ./logs:/pgbadger/logs
